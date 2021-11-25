@@ -1,5 +1,6 @@
 <?php 
 session_start();
-unset($_SESSION['aid']);
-echo "<script>window.location='../adminlogin.php';</script>";
-?>
+unset($_SESSION['mm']);
+unset($_SESSION['em']);
+echo "<script>window.location='../stafflogin.php';</script>";
+ ?>
