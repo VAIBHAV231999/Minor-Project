@@ -6,27 +6,24 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header ">
-                            <h4 class="card-title">IQ TEST</h4>
-                            <p class="card-category">Iq Test for Mental Retardation </p>
+                            <h4 class="card-title">ACCOUNT DETAILS</h4>
+                            <p class="card-category">account of Pingalwara</p>
                         </div>
                         <div class="card-body">
-                        <form action="" method="post" >
-    
-    <div class="row pt-3">
-<div class="col-md-12">   
-    <select type="text" name="type" class="form-control"> 
-    <option>Perceptual-Motor</option>
-    <option>Self Care </option>
-     <option>Communication &amp; Socialisation</option>
-     <option>Academic</option>
-    <option>Occupational</option>
-    </select>
-        </div>  </div>      
+                        <form action="" method="post" enctype="multipart/form-data">
+         <div class="row">
+<div class="col-md-12">              
+            <input type="tel" name="acc" placeholder="ACCOUNT NUMBER" class="form-control">
+             </div></div>
 <div class="row">
 <div class="col-md-12">   
-            <input type="text" name="question" placeholder="Type Your Question here ..." class="form-control"> 
-    </div></div>         
-<div class="row pt-3">
+            <input type="text" name="bname" placeholder="BANK NAME" class="form-control"> 
+    </div></div>
+    <div class="row">
+<div class="col-md-12">   
+            <input type="text" name="code" placeholder="CODE" class="form-control"> 
+        </div>  </div>           
+<div class="row">
 <div class="col-md-3">
              <button type="submit" class="btn btn-success" name="save">SAVE DEATAILS </button>
              </div>   
@@ -38,9 +35,9 @@
     if(isset($_POST['save'])) 
     {
      
-         $sql="insert into questions(question,type) values('$_POST[question]','$_POST[type]');";
+         $sql="insert into account_detail(account_no,bank_name,code) values('$_POST[acc]','$_POST[bname]','$_POST[code]');";
         if($conn->query($sql))
-            echo"<div class='alert alert-success'>QUESTION SAVED SUCCESSFULLY </div>";
+            echo"<div class='alert alert-success'> DETAILS SAVED SUCCESSFULLY </div>";
         else
             echo"<div class='alert alert-warning'> ERROR IN QUERY ".$conn->error." </div>";
        }

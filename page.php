@@ -1,28 +1,75 @@
-<?php include 'header.php' ?>
-  <?php
-$result=$conn->query("SELECT * from page where page_id='$_GET[pid]';");
-$row=$result->fetch_assoc();
- ?>
 
-<div class="container-fluid px-0" style='background:url(image/main12.png); background-repeat:no-repeat; background-size:cover; color:mediumpurple'> 
-<div class="pt-5 pb-5 text-center" style="background:rgba(0,0,0,0.8)">
-<h2 class="pt-5 pb-5 " style='font-family:serif'> <?php echo $row['page_title'];?> </h2>
-    
-    </div></div>
-
-<div class="container pt-5">
-
-    <div class="row">
-<div class="col-md-9 text-justify">
-    
-    <h4> <?php echo $row['page_title'];?> </h4>
-    <br/>
-    <?php echo $row['content1'];?> 
-    <div class="p-3">
-        <img src="admin/<?php echo $row['featured_image'];?>" height="350" width="85%">
-    </div>
-    <?php echo $row['content2'];?>  </div>
-       <div class="col-md-3"> <?php include 'sidebar.php' ?></div> 
-    </div>
+<?php include 'header.php'; ?>
+<script src="../editor/ckeditor.js"></script>
+<div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header ">
+                            <h4 class="card-title">PAGE</h4>
+                            <p class="card-category">Pages of Pingalwara</p>
+                        </div>
+                        <div class="card-body">
+                        <form action="" method="post" enctype="multipart/form-data">
+         <div class="row">
+<div class="col-md-12">   
+            <input type="text" name="page" placeholder="PAGE_TITLE" class="form-control"> 
 </div>
-<?php include 'footer.php' ?>
+<div class="col-md-12">
+             <textarea type="submit" name="con1" id="con1"placeholder="CONTENT1"class="form-control"></textarea></div>
+<div class="col-md-12">
+             <textarea type="submit" name="con2" id="con2"placeholder="CONTENT2"class="form-control"></textarea></div>
+
+<div class="col-md-6">   
+            <input type="file" name="img" class="form-control"> 
+             </div></div>
+<div class="row">
+<div class="col-md-"2>
+             <button type="submit" class="btn btn-success btn-block" name="save">SAVE</button>
+    </div>  
+<div class="col-md-2">
+             <button type="reset" class="btn btn-success btn-block" name="reset">CLEAR </button>
+    </div></div>
+                           
+                            </form>
+                            
+    <?php
+    if(isset($_POST['save'])) 
+    {
+      $dirname="uploadimg/";
+      $tmpname=$_FILES['img'] ['tmp_name'];  
+      $filename=$dirname.$_FILES['img']['name'];
+        
+      $ext=strtolower(pathinfo($filename,PATHINFO_EXTENSION));
+      if($ext=="jpeg" or $ext="jpg" or $ext=="png")
+      {
+       if(move_uploaded_file($tmpname,$filename))
+       {
+         $sql="insert into page(page_title,content1,content2,featured_image) values('$_POST[page]','$_POST[con1]','$_POST[con2]','$filename');";
+        if($conn->query($sql))
+            echo"<div class='alert alert-success'>  SAVED SUCCESSFULLY </div>";
+        else
+            echo"<div class='alert alert-warning'> ERROR IN QUERY ".$conn->error." </div>";
+       }
+        else
+        {
+            echo"<div class='alert alert-warning'> ERROR IN UPLOADING</div>";
+        }
+      }
+      else
+      {
+          echo"<div class='alert alert-warning'> ONLY JPG,PNG,JPEG FILES ARE ALLOWED</div>";
+      }
+    }
+    ?>
+    
+                            
+                        </div>
+                    </div>
+                </div>
+                                </div>
+        </div>
+    </div>
+<script>CKEDITOR.replace(con1);CKEDITOR.replace(con2)</script>
+<?php include 'footer.php';?>

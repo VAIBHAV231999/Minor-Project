@@ -9,7 +9,7 @@
                             <p class="card-category">E-Books of Pingalwara</p>
                         </div>
                         <div class="card-body">
-                          <table class="table table-hover">
+                         <table class="table table-hover">
                     
         <?php
         echo"<tr>";
@@ -20,7 +20,7 @@
         {   $i++;
             $cid=$row['e_id'];
             
-           echo"<td class='text-center p-2'><a href='".$row['e_book']."' target='_blank'> <i class='icofont-file-pdf icofont-3x'> </i></a><br/>";
+           echo"<td class='text-center p-2'><a href='../staff/".$row['e_book']."' target='_blank'> <i class='icofont-file-pdf icofont-3x'> </i></a><br/>";
            
             echo"".$row['title']."</td>";
             echo"<td><a href='e_book.php?del=$cid'><i class='icofont-trash'></i></a></td>";
@@ -45,6 +45,7 @@
     }
     ?>  
     </table>
+    
                             
                         </div>
                     </div>

@@ -9,7 +9,7 @@
                             <p class="card-category">Videos of Pingalwara</p>
                         </div>
                         <div class="card-body">
-                          <table class="table table-hover ">
+                         <table class="table table-hover ">
         
     <?php
         $i=0;echo"<tr>";
@@ -20,7 +20,7 @@
             $cid=$row['vid_id'];
             
            
-           echo"<td class='text-center'><iframe src='../staff/".$row['video']."'width='70px' height='70px'></iframe><br/>";
+           echo"<td class='text-center'><iframe src='".$row['video']."'width='70px' height='70px'></iframe><br/>";
              echo"".$row['title']."</td>";
             echo"<td><a href='ourvideo_gallery.php?del=$cid'><i class='icofont-trash'></i></a> &nbsp; &nbsp; </td>";
             if($i%4==0)

@@ -9,9 +9,6 @@
                             <p class="card-category">Images of Pingalwara</p>
                         </div>
                         <div class="card-body">
-                                     
-        <div class="card">
-                        <div class="card-body">
                          <table class="table table-hover">
        
     <?php
@@ -23,7 +20,7 @@
         {   $i++;
             $cid=$row['image_id'];
             
-           echo"<td class='text-center'><img src='".$row['image']."'width='70px' height='70px'><br/>";
+           echo"<td class='text-center'><img src='../staff/".$row['image']."'width='70px' height='70px'><br/>";
            
             echo"".$row['title']."</td>";
             echo"<td><a href='ourimage_gallery.php?del=$cid'><i class='icofont-trash'></i></a></td>";
@@ -48,9 +45,6 @@
     }
     ?>  
     </table>
-    
-                            
-                        </div>
     
                             
                         </div>

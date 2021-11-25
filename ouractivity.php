@@ -11,7 +11,7 @@
                         </div>
                         <div class="card-body">
                          <table class="table table-hover table-bordered table-stripped">
-       <tr class="text-white" style="background:mediumpurple;"><th> Activity </th> 
+        <tr class="text-white" style="background:mediumpurple;"><th> Activity </th> 
         <th>Description</th> <th> Image </th><th> ACTION </th> </tr>
     <?php
         $sql="SELECT * from activity order by activity ASC;";
@@ -23,9 +23,8 @@
             echo"<td>".$row['activity']."</td>";
             echo"<td> ".substr($row['description'],0,200)."</td>";
             
-            echo"<td><img src='".$row['image']."'width='70px' height='70px'></td>";
-        echo"<td><a href='event_gallery.php?id=$cid'><i class='icofont-image'></i></a></td>";
-            echo"<td><a href='ouractivity.php?del=$cid'><i class='icofont-trash'></i></a> &nbsp; &nbsp; <a href='editactivity.php?id=$cid'><i class='icofont-edit'></i></a></td>";
+            echo"<td><img src='../staff/".$row['image']."'width='70px' height='70px'></td>";
+            echo"<td><a href='ouractivity.php?del=$cid'><i class='icofont-trash'></i></a> &nbsp; &nbsp;</td>";
             
             echo"</tr>";
         }
